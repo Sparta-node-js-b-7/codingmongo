@@ -19,90 +19,68 @@
     ></script>
 
     <title>페이지2 만들기</title>
-
-    <!-- <style>
-      .ex-layout {
-        height: 310px;
-      }
-      .menu {
-        width: 300px;
-        height: 40px;
-        border: 2px solid #09c;
-        background-color: #d7f5ff;
-      }
-      .main .left-menu {
-        float: left;
-        width: 50px;
-        height: 254px;
-        border: 2px solid red;
-        background-color: #ffe7d5;
-      }
-      .main .content {
-        float: left;
-        margin: 50px 0px 0px 30px;
-        width: 250px;
-        height: 250px;
-      }
-      .main .content .article {
-        height: 200px;
-        border: 2px solid blue;
-        background-color: #e2e9ff;
-        margin: 0px 0px 50px 50px;
-      }
-      .main .content .comment {
-        height: 50px;
-        border: 2px solid purple;
-        background-color: #ffddff;
-      }
-
-      .myimage {
-        background-color: greenyellow;
-
-        width: 200px;
-        height: 200px;
-
-        margin: 40px 100px 0px 100px;
-
-        background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg');
-        background-position: center;
-        background-size: cover;
-      } -->
     <style>
-      .header {
-        float: left;
-        display: flex;
-        flex-direction: row;
+      <style>
+    * {
+      font-family: "Noto Serif KR", serif;
+    }
 
-        height: 200px;
-        width: 1500px;
-        margin: 50px;
-        padding: 50px;
-        border-radius: 30px;
-        border-style: solid;
-      }
-      .header .small_title {
-        border-style: solid;
-      }
-      .header .logo {
-        margin: 0px 0px 0px 30px;
-        text-align: justify;
-        text-align: center;
+    .mypic {
+      width: 90%;
+      height: 300px;
+      border-radius: 50px;
 
-        border-radius: 50px;
-        border-style: solid;
-      }
-      .header .team_info_btn {
-        margin: 0px 0px 0px 30px;
-        border-style: solid;
-      }
-      .header .team_list_btn {
-        margin: 0px 0px 0px 30px;
-        border-style: solid;
-      }
-      .header .cheer_msg {
-        margin: 0px 0px 0px 30px;
-        border-style: solid;
-      }
+      background-image: linear-gradient(0deg,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)),
+        url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MjJfMTA2%2FMDAxNjMyMzEwMjE3OTkx.-fwH7y7Ws2Ec8cc7n-Rx0vhaLI1mXnkvXtqQ3UUZS_Eg.GZpqkdXpczfqtSW15EPEIse-JtID-oSdUk0R_x55KIEg.PNG.soyeon_0307%2Fimage.png&type=sc960_832");
+      background-position: center;
+      color: white;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #logo-main img {
+      border-radius: 100px;
+    }
+
+    #topMenu {
+      height: 30px;
+      width: 850px;
+    }
+
+    #topMenu ul li {
+      list-style: none;
+      color: white;
+      float: left;
+      line-height: 50px;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    #topMenu .menulink {
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      border-radius: 20px;
+      display: block;
+      width: 200px;
+      height: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 50px;
+    }
+
+    #topMenu .menulink:hover {
+      color: gray;
+      background-color: #3d3d3d;
+      border-radius: 20px;
+      border: 1px solid white;
+    }
+
       .img {
         float: left;
         margin: 0px 0px 0px 30px;
@@ -153,22 +131,21 @@
     </style>
   </head>
   <body>
-    <!-- <div class="ex-layout">
-      <div class="menu">global menu</div>
-      <div class="main">
-        <div class="left-menu">left menu</div>
-        <div class="content">
-          <div class="article">article</div>
-          <div class="comment">comment</div>
-        </div>
-      </div>
-    </div> -->
-    <div class="header">
-      <div class="small_title"><h1>코딩몬 GO</h1></div>
-      <div class="logo">logo img</div>
-      <div class="team_info_btn">팀 소개</div>
-      <div class="team_list_btn">팀 목록</div>
-      <div class="cheer_msg">응원 메세지</div>
+    <div class="mypic" style="margin: 30px auto 0px auto">
+      <h1>코딩몬Go</h1>
+      <span id="logo-main" style="margin-left: 30px">
+        <img
+          src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684308295785&signature=qJQROGTMoyzNA6UHqofSnzPsnPyOghaepea72_RMNmA&downloadName=image.png"
+          width="300px">
+      </span>
+      <nav id="topMenu">
+        <ul>
+          <li><a class="menulink" href="#">팀 소개</a></li>
+          <li><a class="menulink" href="#">팀원 목록</a></li>
+          <li><a class="menulink" href="message"
+              onclick="window.open(this.href, '_blank', 'width=100', 'height=100'); return false;">응원 메세지</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="img">img</div>
     <div class="right_area">
