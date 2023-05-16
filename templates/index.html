@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <title>코딩몬Go 팀소개</title>
+
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image"
+    content="https://mblogthumb-phinf.pstatic.net/MjAyMDA1MjBfMTY5/MDAxNTg5OTU5OTY5MzMz.u7r8ls2LY1pOqtKlAh21nW7YRAS0JTKw_keocGu0eD4g.YMl1JAA54wRTZbhp6FwfCNX5Uc_kYoaKoFyiKJAnov4g.JPEG.gkstnwl032/aimyon-20200217-060750.jpg?type=w800" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .mypic {
+      width: 90%;
+      height: 300px;
+      border-radius: 50px;
+
+      background-image: linear-gradient(0deg,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)),
+        url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MjJfMTA2%2FMDAxNjMyMzEwMjE3OTkx.-fwH7y7Ws2Ec8cc7n-Rx0vhaLI1mXnkvXtqQ3UUZS_Eg.GZpqkdXpczfqtSW15EPEIse-JtID-oSdUk0R_x55KIEg.PNG.soyeon_0307%2Fimage.png&type=sc960_832");
+      background-position: center;
+      color: white;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #logo-main img {
+      border-radius: 100px;
+    }
+
+    #topMenu {
+      height: 30px;
+      width: 850px;
+    }
+
+    #topMenu ul li {
+      list-style: none;
+      color: white;
+      float: left;
+      line-height: 50px;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    #topMenu .menulink {
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      border-radius: 20px;
+      display: block;
+      width: 200px;
+      height: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 50px;
+    }
+
+    #topMenu .menulink:hover {
+      color: gray;
+      background-color: #3d3d3d;
+      border-radius: 20px;
+      border: 1px solid white;
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      margin: 0px 20% 5% 20%
+    }
+
+    .titleimg {
+      height: 400px;
+      width: 50%;
+
+      background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MjJfMTA2%2FMDAxNjMyMzEwMjE3OTkx.-fwH7y7Ws2Ec8cc7n-Rx0vhaLI1mXnkvXtqQ3UUZS_Eg.GZpqkdXpczfqtSW15EPEIse-JtID-oSdUk0R_x55KIEg.PNG.soyeon_0307%2Fimage.png&type=sc960_832");
+      background-position: center;
+      background-repeat: no-repeat;
+
+      margin: 10% auto 20px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #logo-sub {
+      margin-left: 25%;
+      float: left;
+    }
+
+    #bottomMenu ul li {
+      list-style: none;
+      color: gray;
+      line-height: 95px;
+      vertical-align: middle;
+      text-align: center;
+      float: left;
+      margin: 30px 0px 0px 2%
+    }
+
+    #bottomMenu .link {
+      text-decoration: none;
+      background-color: rgb(43, 42, 42);
+      color: white;
+      border: 1px solid white;
+      border-radius: 20px;
+      display: block;
+      width: 300px;
+      height: 100px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #bottomMenu .link:hover {
+      color: gray;
+      background-color: #3d3d3d;
+      border-radius: 20px;
+      border: 1px solid white;
+    }
+
+    .mycards {
+      width: 95%;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .mycards>.card {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      show_comment();
+    });
+
+    function show_comment() {
+      fetch('/guestbook').then((res) => res.json()).then((data) => {
+        let rows = data['result']
+        $('#msg').empty()
+        rows.forEach((a) => {
+          let name = a['name']
+          let comment = a['comment']
+
+          let temp_html = `<div class="card">
+                                <div class="card-body">
+                                  <blockquote class="blockquote mb-0">
+                                    <p>${comment}</p>
+                                    <footer class="blockquote-footer">${name}</footer>
+                                  </blockquote>
+                                </div>
+                              </div>`
+          $('#msg').append(temp_html)
+        })
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <div class="mypic" style="margin: 30px auto 0px auto">
+    <h1>코딩몬Go</h1>
+    <span id="logo-main" style="margin-left: 30px">
+      <img
+        src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684308295785&signature=qJQROGTMoyzNA6UHqofSnzPsnPyOghaepea72_RMNmA&downloadName=image.png"
+        width="300px">
+    </span>
+    <nav id="topMenu">
+      <ul>
+        <li><a class="menulink" href="#">팀 소개</a></li>
+        <li><a class="menulink" href="#">팀원 목록</a></li>
+        <li><a class="menulink" href="message"
+            onclick="window.open(this.href, '_blank', 'width=100', 'height=100'); return false;">응원 메세지</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="title-wrap">
+    <div class="titleimg">
+    </div>
+      <div class="mycards" id="msg">
+        <div class="card">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>응원메세지가 들어갑니다</p>
+              <footer class="blockquote-footer">호빵맨</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>응원메세지가 들어갑니다</p>
+              <footer class="blockquote-footer">호빵맨</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>응원메세지가 들어갑니다</p>
+              <footer class="blockquote-footer">호빵맨</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div>
+    <span id="logo-sub">
+      <img
+        src="https://e7.pngegg.com/pngimages/33/235/png-clipart-pokemon-go-pokemate-play-pokemon-pikachu-pokemon-go-orange-logo-thumbnail.png"
+        width="150px" style="border-radius: 100px">
+    </span>
+    <nav id="bottomMenu">
+      <ul>
+        <li><a class="link"
+            href="https://spartacodingclub.kr/online/coding101?utm_source=google&utm_medium=pmax&utm_campaign=%EB%AC%B4%EB%A3%8C%ED%8A%B9%EA%B0%95&utm_content=etc&utm_term=etc&gclid=Cj0KCQjwsIejBhDOARIsANYqkD3dy4-PHYw-z94znxHYuR3btLJamNg_megFgSAGHAGYQ_0JNh_uX68aAhhREALw_wcB">스파르타
+            코딩클럽</a></li>
+        <li><a class="link" href="https://teamsparta.notion.site/Spring-6-docs-6b5d43517d0b4d2cb53b66830760205b">Node.js
+            6기 B반</a></li>
+        <li><a class="link" href="https://github.com/">Github</a></li>
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>
