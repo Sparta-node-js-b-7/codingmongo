@@ -11,9 +11,18 @@ db = client.dbsparta
 @app.route('/')
 def home():
    return render_template('index.html')
-@app.route('/message')
-def message():
-   return render_template('message.html')
+
+@app.route('/messages')
+def messages():
+   return render_template('messages.html')
+
+@app.route('/team')
+def team():
+   return render_template('team.html')
+
+@app.route('/member')
+def member():
+   return render_template('member.html')
 
 @app.route("/guestbook", methods=["POST"])
 def guestbook_post():
@@ -30,6 +39,11 @@ def guestbook_post():
 def guestbook_get():
     recent_comments = list(db.messages.find({},{'_id':False}).sort('_id',-1).limit(4))  
     return jsonify({'result': recent_comments})
+
+@app.route("/teams", methods=["GET"])
+def teams_get():
+    team_info = list(db.teams.find({},{'_id':False}))  
+    return jsonify({'result': team_info})
 
 if __name__ == '__main__':
    app.run('0.0.0.0', port=5000, debug=True)
