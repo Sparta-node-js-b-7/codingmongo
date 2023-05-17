@@ -45,6 +45,15 @@
       justify-content: center;
     }
 
+    .home {
+      text-decoration: none;
+      color: white;
+    }
+
+    .home:hover {
+      color: gray;
+    }
+
     #topMenu {
       height: 30px;
       width: 850px;
@@ -137,7 +146,7 @@
     .mycards {
       width: 95%;
       max-width: 500px;
-      margin: auto;
+      margin: 10% auto auto auto
     }
 
     .mycards>.card {
@@ -175,17 +184,17 @@
 
 <body>
   <div class="mypic" style="margin: 30px auto 0px auto">
-    <h1>코딩몬Go</h1>
+    <h1><a class="home" onclick="location.href='/'">코딩몬Go</a></h1>
     <span id="logo-main" style="margin-left: 30px">
       <img
-        src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684308295785&signature=qJQROGTMoyzNA6UHqofSnzPsnPyOghaepea72_RMNmA&downloadName=image.png"
+        src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684398893714&signature=CtgbJQ1nQMaF9a8l5xOxhIQ9f3PpFG7VW8uDJQUdOP4&downloadName=image.png"
         width="300px">
     </span>
     <nav id="topMenu">
       <ul>
-        <li><a class="menulink" href="#">팀 소개</a></li>
-        <li><a class="menulink" href="#">팀원 목록</a></li>
-        <li><a class="menulink" href="message"
+        <li><a class="menulink" href="team">팀 소개</a></li>
+        <li><a class="menulink" href="member">팀원 목록</a></li>
+        <li><a class="menulink" href="messages"
             onclick="window.open(this.href, '_blank','resizable=yes, width=500, height=500'); return false;">응원 메세지</a></li>
       </ul>
     </nav>
