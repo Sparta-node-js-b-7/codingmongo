@@ -28,8 +28,8 @@ def guestbook_post():
 
 @app.route("/guestbook", methods=["GET"])
 def guestbook_get():
-    all_comments = list(db.messages.find({},{'_id':False}))
-    return jsonify({'result': all_comments})
+    recent_comments = list(db.messages.find({},{'_id':False}).sort('_id',-1).limit(4))  
+    return jsonify({'result': recent_comments})
 
 if __name__ == '__main__':
    app.run('0.0.0.0', port=5000, debug=True)
