@@ -20,9 +20,38 @@ def messages():
 def team():
    return render_template('team.html')
 
-@app.route('/member')
-def member():
-   return render_template('member.html')
+@app.route('/post_member')
+def post_member():
+   return render_template('postmember.html')
+
+@app.route('/create_member')
+def create_member():
+   return render_template('create.html')
+
+@app.route("/members-info", methods=["POST"])
+def members_info():
+    name_receive = request.form['name_give']
+    mbti_receive = request.form['mbti_give']
+    birthday_receive = request.form['birthday_give']
+    hobby_receive = request.form['hobby_give']
+    blog_receive = request.form['blog_give']
+    goal_receive = request.form['goal_give']
+    
+    doc = {
+      'name': name_receive,
+      'mbti':mbti_receive,
+      'birthday' : birthday_receive,
+      'hobby': hobby_receive,
+      'blog': blog_receive,
+      'goal': goal_receive
+      }
+    db.members.insert_one(doc)
+    return jsonify({'result': '생성 완료!'})
+
+@app.route("/members", methods=["GET"])
+def get_members():
+    all_members = list(db.members.find({},{'_id':False}))
+    return jsonify({'result': all_members})
 
 @app.route("/guestbook", methods=["POST"])
 def guestbook_post():
