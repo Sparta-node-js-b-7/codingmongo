@@ -105,6 +105,9 @@
 
       margin-right: 50px;
     }
+    .btn {
+      float: right;
+    }
   </style>
 
   <script>
@@ -179,10 +182,19 @@
                                         </tr>
                                       </tbody>
                                     </table>
-                                  </div>`;
-
+                                  </div>
+                                  <button class="btn btn-outline-dark" style="float:right; margin-top: 6px;" onclick="delete_member('${name}')">팀원삭제</button>`;
+                                  
         $('.member-details').html(details_temp_html)
       })
+    }
+
+    function delete_member(name) {
+      fetch(`/members/${name}`, { method: "DELETE"}).then((res) => res.json()).then((data) => {
+        swal(data["result"], 'success').then(function () {
+        show_member()
+        })
+      });
     }
 
     function openPopup(url, width, height) {
@@ -214,12 +226,12 @@
 
 <p></p>
 
-<div style="float:left; margin-left: 30%; margin-top: 15px;">
+<div style="float:left; margin-left: 25%; margin-top: 15px;">
   <img
-    src="https://images.pexels.com/photos/6397725/pexels-photo-6397725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    src="https://cdn.banggooso.com/assets/images/game96/intro/pocket_ball.png"
     height="500px" width="400px">
 </div>
-<div class="member" style="height: 500px; float:left; margin-left: 70px;">
+<div class="member" style="height: 500px; float:left; margin-left: 70px; min-width: 300px; max-width: 500px;">
   <p></p>
   <div class="member-details">
     <table class="table">
