@@ -43,7 +43,8 @@ def members_info():
       'birthday' : birthday_receive,
       'hobby': hobby_receive,
       'blog': blog_receive,
-      'goal': goal_receive
+      'goal': goal_receive,
+      'memberId' : name_receive.lower()
       }
     db.members.insert_one(doc)
     return jsonify({'result': '생성 완료!'})
@@ -52,6 +53,12 @@ def members_info():
 def get_members():
     all_members = list(db.members.find({},{'_id':False}))
     return jsonify({'result': all_members})
+
+@app.route("/members/<name>", methods=["GET"])
+def member_get(name):
+    member_data = db.members.find_one({'name': name},{'_id':False})
+    return jsonify({'result': member_data})
+
 
 @app.route("/guestbook", methods=["POST"])
 def guestbook_post():
