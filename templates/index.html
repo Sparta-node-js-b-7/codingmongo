@@ -62,14 +62,75 @@
 
           margin-right: 30px;
       }
+
+      .mytable {
+
+        width: 490px;
+      }
   </style>
 
 <script>
-  function hey(){
 
-    alert('감사합니다!')
-  }
- 
+    function hey() {
+        alert('감사합니다.')
+
+    }
+    
+
+$(document).ready(function () {
+            show_order();
+        });
+        function show_order() {
+            fetch('/profile').then((res) => res.json()).then((data) => {
+                console.log(data)
+                let rows = data['result']
+                $('#order-box').empty()
+                rows.forEach((a) => {
+                    let name = a['name']
+                   let mbti = a['mbti']
+           	       let blog = a['blog']
+                  let hobby = a['hobby']
+	                 let brithday = a['birthday']
+	                let goal = a['goal']
+                   
+		             let temp_html = ` <tr>
+                                            <td>${mbti}</td>
+                                            <td>${hobby}</td>
+                                            <td>${blog}</td>
+                                            <td>${birthday}</td>
+                                            <td>${goal}</td>
+                                        </tr>`
+                                    
+                    $('#order-box').append(temp_html)
+
+
+                })
+            
+                
+            })
+        }
+        function save_order() {
+            
+            let MBTI = $('#MBTI').val()
+            let blog = $('#blog').val()
+            let hobby = $('#hobby').val()
+	          let birthday = $('#birthday').val()
+          	let goal = $('#goal').val()
+
+            let formData = new FormData();
+            formData.append("MBTI_give", name)
+            formData.append("biog_give", blog)
+            formData.append("hobby_give", hobby)
+	           formData.append("birthday_give", brithday)
+	          formData.append("goal_give", goal)
+        
+
+            fetch('/profile', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+                console.log(data);
+                alert(data["msg"]);
+                window.location.reload()
+            });
+        }
 </script>
 
 
@@ -88,9 +149,9 @@
 <div class="mypost"></div>
 
   <div class="mybtn">
-  <button type="button" class="btn btn-outline-dark">이상훈</in>
-  <button type="button" class="btn btn-outline-dark">박예림</button>
-  <button type="button" class="btn btn-outline-dark">이재광</button>
+  <button onclick="save_order()" type="button" class="btn btn-outline-dark">이상훈</in>
+  <button onclick="save_order()" type="button" class="btn btn-outline-dark">박예림</button>
+  <button onclick="save_order()" type="button" class="btn btn-outline-dark">이재광</button>
    </div>
 
   <p></p>
@@ -98,50 +159,59 @@
 
   <div style="width: 10%; height: 700px; float:left;"></div>
   <div style="width: 30%; height: 700px; float:left;">
-      <img src="https://images.pexels.com/photos/6397725/pexels-photo-6397725.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="myimage">
-  </div>
+      <img src="https://images.pexels.com/photos/6397725/pexels-photo-6397725.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1" alt="myimage">  </div> 
+      <div style="width: 10%; height: 500px; float:left;"></div>
+      <div style="width: 40%; height: 500px; float:left;">
+        <p></p>
+     <div class="mytable">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">mbti</th>
+                <th scope="col">blog</th>
+                
+            </tr>
+        </thead>
+        <tbody id="order-box">
+            <tr>
+                
+                <td>intj</td>                
+                <td>sola261</td>
+            </tr>
+          </tbody>
 
-  <div style="width: 50%; height: 500px; float:left;">
-   
-      <p></p>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">MBTI</label>
-        <input type="MBTI" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text"></div>
-      </div>
-      <div class="mb-3">
-        <P></P>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">블로그 주소</label>
-          <input type="blog" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text"></div>
-        </div>
-        <div class="mb-3">
-          <P></P>
-          <div class="mb-3">
-            <label for="hobby" class="form-label">취미</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text"></div>
-          </div>
-          <div class="mb-3">
-            <P></P>
-            <div class="mb-3">
-              <label for="brithday" class="form-label">생일</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text"></div>
-            </div>
-            <div class="mb-3">
-              <p></p>
-              <div class="mb-3">
-                <label for="gola" class="form-label">목표</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">코딩몬스터 파이팅!</div>
-              </div>
-              <div class="mb-3">
-                <P></P>
+        <thead>
+          <tr>
+              <th scope="col">hobby</th>
+              <th scope="col">birthday</th>
+                  
+            </tr>
+        </thead>
+          <tbody id="order-box">
+            <tr>
+                <td>독서</td>
+                <td>10월 6일</td>
+          </tbody>
+
+          <thead>
+            <tr>
+                <th scope="col">goal</th>
+                
+            </tr>
+        </thead>
+        <tbody id="order-box">
+            <tr>
+                <td>포기하지말자</td>
+            </tr>
+          </tbody>
+    </table>
+  </div>
+ </div>
+</div>
+ 
         <p></p>
         <div style="display:flex; flex-direction:row; align-items:center; justify-content:center;">
-        <button onclick="hey();" type="button" class="btn btn-outline-danger">좋아요</button></div> 
+        <button type="button" onclick="hey()" class="btn btn-outline-danger">좋아요</button></div> 
        </div>
 
        <div style="width: 23%; height: 300px; float:left;"></div>

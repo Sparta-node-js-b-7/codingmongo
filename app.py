@@ -2,10 +2,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-import certifi
-ca = certifi.where()
-
-client = MongoClient('mongodb+srv://sparta:test@cluster0.2vnjgxh.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
+client = MongoClient('mongodb+srv://sparta:test@cluster0.lngkyzb.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
 @app.route('/')
@@ -15,21 +12,27 @@ def home():
 def message():
    return render_template('message.html')
 
-@app.route("/guestbook", methods=["POST"])
-def guestbook_post():
-    name_receive = request.form['name_give']
-    comment_receive = request.form['comment_give']
+@app.route("/profile", methods=["POST"])
+def profile_post():
+    mbti_receive = request.form['mbti_give']
+    birthday_receive = request.form['birthday_give']
+    hobby_receive = request.form['hobby_give']
+    blog_receive = request.form['blog_give']
+    goal_receive = request.form['goal_give']
     doc = {
-        'name' : name_receive,
-        'comment' : comment_receive
+        'mbti' : mbti_receive,
+        'birthday' : birthday_receive,
+        'hobby' : hobby_receive,
+        'blog' : blog_receive,
+        'goal' : goal_receive
     }
-    db.messages.insert_one(doc)
+    db.profile.insert_one(doc)
     return jsonify({'result': '저장완료!'})
 
-@app.route("/guestbook", methods=["GET"])
-def guestbook_get():
-    recent_comments = list(db.messages.find({},{'_id':False}).sort('_id',-1).limit(4))  
-    return jsonify({'result': recent_comments})
+@app.route("/profile", methods=["GET"])
+def profile_get():
+   profile_data = list(db.profile.find({},{'_id':False}).sort('_id',-1).limit(4))    
+   return jsonify({'result': profile_data})
 
 if __name__ == '__main__':
    app.run('0.0.0.0', port=5000, debug=True)
