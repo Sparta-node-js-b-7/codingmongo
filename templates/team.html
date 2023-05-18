@@ -20,7 +20,7 @@
     }
 
     .mypic {
-      width: 90%;
+      width: 75%;
       height: 300px;
       border-radius: 50px;
 
@@ -89,6 +89,11 @@
       border-style: solid;
       border-radius: 20px;
       margin-left: 25%;
+
+      background-image:
+        url("https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684398893714&signature=CtgbJQ1nQMaF9a8l5xOxhIQ9f3PpFG7VW8uDJQUdOP4&downloadName=image.png");
+      background-size: cover;
+      
     }
 
     .right_area {
@@ -104,7 +109,6 @@
       height: 100px;
 
       padding: 30px 0px;
-
     }
 
     .team_desc {
@@ -188,33 +192,27 @@
         let intro = teamsData[0]['intro']
         let member = teamsData[0]['member']
         let overall_goal = teamsData[0]['overall_goal']
-        let temp_html = `  <div class="team_desc">
-                              ${intro}
-                            </div>
-                            <div class="members_wrap">
-                              <div class="members_title">
-                                조원
-                              </div>
-                              <div class="team_goal">
-                                팀 목표
-                              </div>
-                            </div>
-                            <div class=" desc_wrap">
-                              <div class="members_desc">${member}</div>
-                              <div class="team_goal_desc">${overall_goal}</div>`
 
         $('.team_desc').html(intro);
         $('.members_desc').html(member);
         $('.team_goal_desc').html(overall_goal);
       })
     }
+
+    function openPopup(url, width, height) {
+      let left = (window.screen.width - width) / 2;
+      let top = (window.screen.height - height) / 2;
+      let options = 'resizable=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left;
+      window.open(url, '_blank', options);
+    }
+
   </script>
 </head>
 
 <body>
   <div class="mypic" style="margin: 30px auto 0px auto">
     <h1><a class="home" onclick="location.href='/'">코딩몬Go</a></h1>
-    <span id="logo-main" style="margin-left: 30px">
+    <span id="logo-main">
       <img
         src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684398893714&signature=CtgbJQ1nQMaF9a8l5xOxhIQ9f3PpFG7VW8uDJQUdOP4&downloadName=image.png"
         width="300px">
@@ -222,9 +220,9 @@
     <nav id="topMenu">
       <ul>
         <li><a class="menulink" href="team">팀 소개</a></li>
-        <li><a class="menulink" href="member">팀원 목록</a></li>
+        <li><a class="menulink" href="post_member">팀원 목록</a></li>
         <li><a class="menulink" href="messages"
-            onclick="window.open(this.href, '_blank','resizable=yes, width=500, height=500'); return false;">응원 메세지</a>
+            onclick="openPopup(this.href, 600, 500); return false;">응원 메세지</a>
         </li>
       </ul>
     </nav>
