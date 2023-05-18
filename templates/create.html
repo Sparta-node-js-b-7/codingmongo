@@ -64,6 +64,7 @@
       formData.append("hobby_give", hobby);
       formData.append("blog_give", blog);
       formData.append("goal_give", goal);
+      formData.append("memberId_give", name.toLowerCase());
 
       if (name == '' || mbti == '' || birthday == '' || hobby == '' || blog == '' || goal == '') {
         swal('생성 실패', '데이터 값을 입력하세요.', 'error');
@@ -72,7 +73,8 @@
 
       fetch('/members-info', { method: "POST", body: formData, }).then((res) => res.json()).then((data) => {
         swal(data["result"], 'success').then(function () {
-          window.close()
+          window.opener.location.reload();
+          window.close();
         })
       });
     }

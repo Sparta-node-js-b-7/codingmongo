@@ -116,13 +116,30 @@
       fetch('/members').then((res) => res.json()).then((data) => {
         let member_data = data['result'];
         $('.member-details').empty()
+        $('.mybtn').empty()
 
-        let name = member_data[0]['name'];
-        let mbti = member_data[0]['mbti'];
-        let birthday = member_data[0]['birthday'];
-        let hobby = member_data[0]['hobby'];
-        let blog = member_data[0]['blog'];
-        let goal = member_data[0]['goal'];
+        member_data.forEach((member, index) => {
+          let name = member['name'];
+
+          let temp_html = `<button class="btn btn-outline-dark" onclick="member_info('${name}')">${name}</button>`;
+          $('.mybtn').append(temp_html);
+
+          if (index ==0) {
+            member_info(name);
+          }
+        });
+      })
+    };
+
+    function member_info(name) {
+      fetch(`/members/${name}`).then((res) => res.json()).then((data) => {
+        let member = data['result'];
+        let name = member['name'];
+        let mbti = member['mbti'];
+        let birthday = member['birthday'];
+        let hobby = member['hobby'];
+        let blog = member['blog'];
+        let goal = member['goal'];
 
         let details_temp_html = `  <div class="mytable">
                                     <table class="table">
@@ -132,7 +149,7 @@
                                           <th scope="col">MBTI</th>
                                         </tr>
                                       </thead>
-                                      <tbody id="order-box">
+                                      <tbody>
                                         <tr>
                                           <td>${name}</td>
                                           <td>${mbti}</td>
@@ -144,7 +161,7 @@
                                           <th scope="col">hobby</th>
                                         </tr>
                                       </thead>
-                                      <tbody id="order-box">
+                                      <tbody>
                                         <tr>
                                           <td>${birthday}</td>
                                           <td>${hobby}</td>
@@ -155,16 +172,18 @@
                                           <th scope="col">목표</th>
                                         </tr>
                                       </thead>
-                                      <tbody id="order-box">
+                                      <tbody>
                                         <tr>
                                           <td>${blog}</td>
                                           <td>${goal}</td>
                                         </tr>
                                       </tbody>
-                                    </table>`
-        $('.member-details').append(details_temp_html)
+                                    </table>
+                                  </div>`;
+
+        $('.member-details').html(details_temp_html)
       })
-    };
+    }
 
     function openPopup(url, width, height) {
       let left = (window.screen.width - width) / 2;
@@ -178,7 +197,7 @@
   <h1><a class="home" onclick="location.href='/'">코딩몬Go</a></h1>
   <span id="logo-main">
     <img
-      src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684398893714&signature=CtgbJQ1nQMaF9a8l5xOxhIQ9f3PpFG7VW8uDJQUdOP4&downloadName=image.png"
+      src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684490819911&signature=BaU88KkK4dHy4T3SpeZu27QzZZ8Q10_b3-uHJA5DbJA&downloadName=image.png"
       width="300px">
   </span>
   <nav id="topMenu">
@@ -191,9 +210,6 @@
   </nav>
 </div>
 <div class="mybtn">
-  <button class="btn btn-outline-dark">이상훈</button>
-  <button class="btn btn-outline-dark">박예림</button>
-  <button class="btn btn-outline-dark">이재광</button>
 </div>
 
 <p></p>

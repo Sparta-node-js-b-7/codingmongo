@@ -63,6 +63,7 @@
 
       fetch('/guestbook', { method: "POST", body: formData, }).then((res) => res.json()).then((data) => {
         swal(data["result"], 'success').then(function () {
+          window.opener.location.reload()
           window.close()
         })
       });
