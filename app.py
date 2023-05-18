@@ -49,6 +49,11 @@ def members_info():
     db.members.insert_one(doc)
     return jsonify({'result': '생성 완료!'})
 
+@app.route("/members/<name>", methods=["DELETE"])
+def member_delete(name):
+    db.members.delete_one({'name': name})
+    return jsonify({'result':'삭제 완료!'})
+
 @app.route("/members", methods=["GET"])
 def get_members():
     all_members = list(db.members.find({},{'_id':False}))
