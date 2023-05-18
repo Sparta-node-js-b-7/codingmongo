@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <title>코딩몬Go 팀소개</title>
+
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image"
+    content="https://mblogthumb-phinf.pstatic.net/MjAyMDA1MjBfMTY5/MDAxNTg5OTU5OTY5MzMz.u7r8ls2LY1pOqtKlAh21nW7YRAS0JTKw_keocGu0eD4g.YMl1JAA54wRTZbhp6FwfCNX5Uc_kYoaKoFyiKJAnov4g.JPEG.gkstnwl032/aimyon-20200217-060750.jpg?type=w800" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .mypic {
+      width: 75%;
+      height: 300px;
+      border-radius: 50px;
+
+      background-image: linear-gradient(0deg,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)),
+        url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MjJfMTA2%2FMDAxNjMyMzEwMjE3OTkx.-fwH7y7Ws2Ec8cc7n-Rx0vhaLI1mXnkvXtqQ3UUZS_Eg.GZpqkdXpczfqtSW15EPEIse-JtID-oSdUk0R_x55KIEg.PNG.soyeon_0307%2Fimage.png&type=sc960_832");
+      background-position: center;
+      color: white;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home {
+      text-decoration: none;
+      color: white;
+    }
+
+    .home:hover {
+      color: gray;
+    }
+
+    #topMenu {
+      height: 30px;
+      width: 850px;
+    }
+
+    #topMenu ul li {
+      list-style: none;
+      color: white;
+      float: left;
+      line-height: 50px;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    #topMenu .menulink {
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      border-radius: 20px;
+      display: block;
+      width: 200px;
+      height: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 50px;
+    }
+
+    #topMenu .menulink:hover {
+      color: gray;
+      background-color: #3d3d3d;
+      border-radius: 20px;
+      border: 1px solid white;
+    }
+
+    .mybtn {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mybtn>button {
+      border-radius: 10px;
+
+      width: 200px;
+      height: 50px;
+
+      margin-right: 50px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      show_member();
+    });
+
+    function show_member() {
+      fetch('/members').then((res) => res.json()).then((data) => {
+        let member_data = data['result'];
+        $('.member-details').empty()
+
+        let name = member_data[0]['name'];
+        let mbti = member_data[0]['mbti'];
+        let birthday = member_data[0]['birthday'];
+        let hobby = member_data[0]['hobby'];
+        let blog = member_data[0]['blog'];
+        let goal = member_data[0]['goal'];
+
+        let details_temp_html = `  <div class="mytable">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">이름</th>
+                                          <th scope="col">MBTI</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="order-box">
+                                        <tr>
+                                          <td>${name}</td>
+                                          <td>${mbti}</td>
+                                        </tr>
+                                      </tbody>
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">birthday</th>
+                                          <th scope="col">hobby</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="order-box">
+                                        <tr>
+                                          <td>${birthday}</td>
+                                          <td>${hobby}</td>
+                                      </tbody>
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Blog</th>
+                                          <th scope="col">목표</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="order-box">
+                                        <tr>
+                                          <td>${blog}</td>
+                                          <td>${goal}</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>`
+        $('.member-details').append(details_temp_html)
+      })
+    };
+
+    function openPopup(url, width, height) {
+      let left = (window.screen.width - width) / 2;
+      let top = (window.screen.height - height) / 2;
+      let options = 'resizable=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left;
+      window.open(url, '_blank', options);
+    }
+  </script>
+</head>
+<div class="mypic" style="margin: 30px auto 0px auto">
+  <h1><a class="home" onclick="location.href='/'">코딩몬Go</a></h1>
+  <span id="logo-main">
+    <img
+      src="https://file.notion.so/f/s/7e1966ee-c797-495e-89a4-6c3fe2050d12/image.png?id=18a48e66-455e-4483-98d0-0f619887b7e5&table=block&spaceId=0f08c169-f0d5-4837-ab2d-83e1fc75ee5e&expirationTimestamp=1684398893714&signature=CtgbJQ1nQMaF9a8l5xOxhIQ9f3PpFG7VW8uDJQUdOP4&downloadName=image.png"
+      width="300px">
+  </span>
+  <nav id="topMenu">
+    <ul>
+      <li><a class="menulink" href="team">팀 소개</a></li>
+      <li><a class="menulink" href="post_member">팀원 목록</a></li>
+      <li><a class="menulink" href="messages" onclick="openPopup(this.href, 600, 500); return false;">응원 메세지</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="mybtn">
+  <button class="btn btn-outline-dark">이상훈</button>
+  <button class="btn btn-outline-dark">박예림</button>
+  <button class="btn btn-outline-dark">이재광</button>
+</div>
+
+<p></p>
+
+<div style="float:left; margin-left: 30%; margin-top: 15px;">
+  <img
+    src="https://images.pexels.com/photos/6397725/pexels-photo-6397725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    height="500px" width="400px">
+</div>
+<div class="member" style="height: 500px; float:left; margin-left: 70px;">
+  <p></p>
+  <div class="member-details">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">이름</th>
+          <th scope="col">MBTI</th>
+        </tr>
+      </thead>
+      <tbody id="order-box">
+        <tr>
+          <td>이름을 입력하세요</td>
+          <td>MBTI를 입력하세요</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th scope="col">birthday</th>
+          <th scope="col">hobby</th>
+        </tr>
+      </thead>
+      <tbody id="order-box">
+        <tr>
+          <td>생일을 입력하세요</td>
+          <td>취미를 입력하세요</td>
+      </tbody>
+      <thead>
+        <tr>
+          <th scope="col">Blog</th>
+          <th scope="col">목표</th>
+        </tr>
+      </thead>
+      <tbody id="order-box">
+        <tr>
+          <td>블로그주소를 입력</td>
+          <td>목표를 입력하세요</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="btn">
+    <a type="button" href="create_member" onclick="openPopup(this.href, 700, 700); return false;"
+      class="btn btn-outline-danger">
+      팀원 생성
+    </a>
+  </div>
+</div>
+
+<body>
+
+</body>
+
+</html>
